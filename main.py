@@ -1,31 +1,24 @@
+from path_tree_script import print_tree
+from cats_info import get_cats_info
+from salary_info import total_salary
+
+path_cats_list = 'files_for_test/cats_list/cats.txt'
+path_employees_list = 'files_for_test/employees_and_salaries/employees.txt'
+test_path = 'files_for_test'
 
 
-# Calculate total and average salary from file
-def total_salary(path) -> set:
-    try:
-        with open(path, 'r', encoding='utf-8') as file:
-            salaries_list = [int(line.split(',')[1]) for line in file]
-            sum_salary = sum(salaries_list)
-            average_salary = int(sum_salary / len(salaries_list))
-        return {sum_salary, average_salary}
-
-    except FileNotFoundError:
-        raise FileNotFoundError('File not found')
-    except PermissionError:
-        raise PermissionError('Permission denied')
+# Module 4 / Task 1 /  Calculate total and average salary from file
+total, average = total_salary(path_employees_list)
+print(f'Result for Module 4 / Task 1')
+print(f'Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}\n\n')
 
 
-# Get cats info list
-def get_cats_info(path):
-    list_of_cats = []
-    try:
-        with open(path, 'r', encoding='utf-8') as file:
-            for line in file:
-                cat_id, cat_name, cat_age = line.split(',')
-                list_of_cats.append({"id": cat_id, "name": cat_name, "age": int(cat_age)})
-        return list_of_cats
+# Module 4 / Task 2 / Get cats info list
+test_cats_list = get_cats_info(path_cats_list)
+print(f'Result for Module 4 / Task 2')
+print(f'{test_cats_list}\n\n')
 
-    except FileNotFoundError:
-        raise FileNotFoundError('File not found')
-    except PermissionError:
-        raise PermissionError('Permission denied')
+
+# Module 4 / Task 3 / Print path tree
+print(f'Result for Module 4 / Task 3')
+print_tree(test_path)
