@@ -1,4 +1,4 @@
-from script_path_tree import print_tree
+from script_path_tree import main
 from script_cats_info import get_cats_info
 from script_salary_info import total_salary
 
@@ -23,4 +23,4 @@ print(f'{test_cats_list}\n\n')
 
 # Module 4 / Task 3 / Print path tree
 print(f'Result for Module 4 / Task 3')
-print_tree(test_path)
+main(test_path)

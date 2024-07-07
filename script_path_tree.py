@@ -26,14 +26,17 @@ def build_tree(dir_path: Path, prefix=''):
     except PermissionError:
         raise PermissionError('Permission denied')
 
-    # contents each get pointers that are ├── with a final └── :
+    if not prefix:  # Display the root directory only on the first call
+        yield Fore.YELLOW + '📂 ' + dir_path.name
+
+    # Contents each get pointers that are ├── with a final └── :
     pointers = [tee] * (len(contents) - 1) + [last]
     for pointer, path in zip(pointers, contents):
         if path.is_dir():
             yield prefix + pointer + Fore.YELLOW + '📂 ' + path.name
-            # extend the prefix and recurse:
+            # Extend the prefix and recurse:
             extension = branch if pointer == tee else space
-            # i.e. space because last, └── , above so no more |
+            # Space because last, └── , above so no more |
             yield from build_tree(path, prefix=prefix + extension)
         else:
             yield prefix + pointer + Fore.MAGENTA + '📜 ' + path.name
