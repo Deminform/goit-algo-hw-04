@@ -1,7 +1,9 @@
-from path_tree_script import print_tree
-from cats_info import get_cats_info
-from salary_info import total_salary
+from script_path_tree import print_tree
+from script_cats_info import get_cats_info
+from script_salary_info import total_salary
 
+
+# Path to files for each task
 path_cats_list = 'files_for_test/cats_list/cats.txt'
 path_employees_list = 'files_for_test/employees_and_salaries/employees.txt'
 test_path = 'files_for_test'
